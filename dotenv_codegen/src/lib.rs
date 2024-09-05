@@ -13,7 +13,7 @@ fn dotenv_inner(input: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
     let manifest_dir = std::env::var("CARGO_MANIFEST_DIR")
         .expect("Failed to get CARGO_MANIFEST_DIR environment variable");
     
-    if let Err(err) = dotenvy::from_path(&format!("{manifest_dir}/.env")) {
+    if let Err(err) = dotenvy::from_path(&format!("{manifest_dir}/../.env")) {
         let msg = format!("Error loading .env file: {}", err);
         return quote! {
             compile_error!(#msg);
